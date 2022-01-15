@@ -1,2 +1,2 @@
-# minecraft-fabric-1.18-template ![Build](https://github.com/DeflatedPickle/minecraft-fabric-1.18-template/actions/workflows/gradle-build.yml/badge.svg)
-A template for getting started with Minecraft 1.18 Fabric mods using Kotlin
+# Restock ![Build](https://github.com/DeflatedPickle/Restock/actions/workflows/gradle-build.yml/badge.svg)
+A Minecraft Fabric mod that refills active stacks from other stacks in your inventory
