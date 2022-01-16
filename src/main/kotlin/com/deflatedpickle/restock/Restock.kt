@@ -29,7 +29,11 @@ object Restock : ClientModInitializer {
                 if (other != null) {
                     other.decrement(1)
 
-                    if (other.isEmpty) {
+                    if (player.inventory.main
+                        .filter { s: ItemStack -> s != stack && stack.item == s.item }
+                        .map { it.count }
+                        .fold(0) { i, i1 -> i + i1 } <= 0
+                    ) {
                         player.sendMessage(
                             TranslatableText("actionbar.finishStack"),
                             true
