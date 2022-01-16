@@ -1,1 +1,5 @@
-{"actionbar.finishStack": "No replacement stack"}
+{
+    "actionbar.finishStack": "No replacement stack",
+    "key.restock.toggle": "Toggle",
+    "key.restock": "Restock"
+}
