@@ -11,7 +11,7 @@ import net.minecraft.client.MinecraftClient
 import net.minecraft.client.option.KeyBind
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
-import net.minecraft.text.TranslatableText
+import net.minecraft.text.Text.translatable
 import org.lwjgl.glfw.GLFW
 import org.quiltmc.loader.api.ModContainer
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer
@@ -64,7 +64,7 @@ object Restock : ClientModInitializer {
                         .fold(0) { i, i1 -> i + i1 } <= 0
                     ) {
                         player.sendMessage(
-                            TranslatableText("actionbar.finishStack"),
+                            translatable("actionbar.finishStack"),
                             true
                         )
                     }
