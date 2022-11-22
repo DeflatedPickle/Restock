@@ -4,16 +4,17 @@
 
 package com.deflatedpickle.restock
 
-import net.fabricmc.api.ClientModInitializer
+import com.mojang.blaze3d.platform.InputUtil
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper
 import net.minecraft.client.MinecraftClient
-import net.minecraft.client.option.KeyBinding
-import net.minecraft.client.util.InputUtil
+import net.minecraft.client.option.KeyBind
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ItemUsageContext
 import net.minecraft.text.TranslatableText
 import org.lwjgl.glfw.GLFW
+import org.quiltmc.loader.api.ModContainer
+import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer
 
 @Suppress("UNUSED")
 object Restock : ClientModInitializer {
@@ -25,14 +26,14 @@ object Restock : ClientModInitializer {
 
     var enabled = true
 
-    private val toggleKeyBinding = KeyBinding(
+    private val toggleKeyBinding = KeyBind(
         "key.$MOD_ID.toggle",
         InputUtil.Type.KEYSYM,
         GLFW.GLFW_KEY_APOSTROPHE,
         "key.$MOD_ID"
     )
 
-    override fun onInitializeClient() {
+    override fun onInitializeClient(mod: ModContainer) {
         println(listOf(MOD_ID, NAME, GROUP, AUTHOR, VERSION))
 
         KeyBindingHelper.registerKeyBinding(toggleKeyBinding)
@@ -70,7 +71,7 @@ object Restock : ClientModInitializer {
 
                     stack.increment(1)
 
-                    player.inventory.main[player.inventory.selectedSlot].bobbingAnimationTime = 5
+                    player.inventory.main[player.inventory.selectedSlot].cooldown = 5
                 }
             }
         }
